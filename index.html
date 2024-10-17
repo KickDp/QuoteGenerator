@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Quote Generator</title>
+    <link href="style.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <div class="content">
+            <h2>Mood Change Quotes</h2>
+            <button value="happiness" class="categoryButton active" >Swing</button>
+            <button value="love" class="categoryButton">Love</button>
+            <button value="life" class="categoryButton" >Life</button>
+            <button value="success" class="categoryButton">Success</button>
+            <button value="friendship" class="categoryButton">Friendship</button>
+        </div>
+        <div class="display" id="quoteDisplay">
+            <div>
+                <p class="quote-text">"Remember this is not the End!"</p>
+                <p class="author-text">- Unknown</p>
+            </div>
+        </div>
+        <button id="generateQuote">Generate Quote</button>
+    </div>
+<script src="api.js"></script>
+</body>
+</html>
