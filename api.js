@@ -20,20 +20,18 @@ document.getElementById("generateQuote").addEventListener("click", function() {
     quoteDisplay.style.backgroundColor = "#d2d2d2";
 
     setTimeout(() => {
-        fetch(`https://api.api-ninjas.com/v1/quotes?category=${selectedCategory}`, {
-            method: 'GET',
-            headers: { 'X-Api-Key': 'WQ+iZ8u2ehsLFgiB179vbg==A9qieRnkMlpWjcBM' }
+        fetch(`https://api.quotable.io/random?tags=${selectedCategory}`)
+        .then(response => {
+            if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+            return response.json();
         })
-        .then(response => response.json())
         .then(data => {
-            if (data && data.length > 0) {
-                const quote = data[0].quote;
-                const author = data[0].author || 'Unknown';
-                quoteText.textContent = `"${quote}"`;
-                authorText.textContent = `- ${author}`;
+            if (data && data.content) {
+                quoteText.textContent = `"${data.content}"`;
+                authorText.textContent = `- ${data.author}`;
             } else {
-                quoteText.textContent = 'No quote found for this category.';
-                authorText.textContent = '';
+                quoteText.textContent = "No quote found for this category.";
+                authorText.textContent = "";
             }
             // Reset styles
             quoteDisplay.style.opacity = '1';
@@ -48,4 +46,3 @@ document.getElementById("generateQuote").addEventListener("click", function() {
         });
     }, 600);
 });
-
