@@ -48,3 +48,4 @@ document.getElementById("generateQuote").addEventListener("click", function() {
         });
     }, 600);
 });
+
